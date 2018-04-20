@@ -1,0 +1,7 @@
+kicker-portal-db/pgdata
+
+node_modules
+
+.idea
+
+yarn.lock

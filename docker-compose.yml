@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+  app:
+    build:
+      context: ./kicker-portal-web
+      dockerfile: Dockerfile
+    volumes:
+      - ./kicker-portal-web:/usr/src/app
+      - /usr/src/app/dist
+    ports:
+      - 3000:80
+    links:
+      - api
+
+  api:
+    build:
+      context: ./kicker-portal-api
+      dockerfile: Dockerfile
+    ports:
+      - 3100:3000
+    links:
+      - db
+
+  db:
+    image: library/postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./kicker-portal-db/pgdata:/var/lib/postgresql/data/pgdata
+      - ./kicker-portal-db/init-scripts:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 3200:8080
+    links:
+      - db
