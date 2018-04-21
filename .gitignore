@@ -1,7 +1,14 @@
+# Docker volumes
 kicker-portal-db/pgdata
 
+# Node
 node_modules
 
+# Yarn
+yarn.lock
+
+# Idea
 .idea
 
-yarn.lock
+# Eclipse
+/.project
