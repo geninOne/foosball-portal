@@ -1,0 +1,55 @@
+version: '3.2'
+
+services:
+
+  db:
+    image: library/postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./kicker-portal-db/pgdata:/var/lib/postgresql/data/pgdata
+      - ./kicker-portal-db/init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./kicker-portal-api
+      dockerfile: Dockerfile
+    ports:
+      - 3100:3000
+    depends_on:
+      - db
+    networks:
+      - app-network
+      
+  app:
+    build:
+      context: ./kicker-portal-web
+      dockerfile: Dockerfile
+    volumes:
+      - ./kicker-portal-web:/usr/src/app
+      - /usr/src/app/dist
+    ports:
+      - 3000:80
+    depends_on:
+      - api
+    networks:
+      - app-network
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 3200:8080
+    depends_on:
+      - db
+    networks:
+      - app-network
+            
+networks:
+  app-network:      
