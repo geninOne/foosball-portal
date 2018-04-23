@@ -2,10 +2,12 @@
 
 ## Requirements
 UI:
-* [Vue.js 2.x](https://vuejs.org/v2/guide/) 
+* [Vue.js 2.x](https://vuejs.org/v2/guide/)
 * [Vue Material](https://vuematerial.io/)
-* [Firebase](https://firebase.google.com/)
+
+Backend:
 * [Express.js](http://expressjs.com/de/)
+* [PostgreSQL](https://www.postgresql.org/)
 
 Virtualisation:
 * [Docker](https://www.docker.com/)
