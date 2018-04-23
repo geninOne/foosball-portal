@@ -1,17 +1,16 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <router-link to="/">Home</router-link>
+    <add-match></add-match>
   </div>
 </template>
 
 <script>
+import AddMatch from './AddMatch';
+
 export default {
   name: 'Statistics',
-  data() {
-    return {
-      msg: 'Leaderboard',
-    };
+  components: {
+    AddMatch,
   },
 };
 </script>
