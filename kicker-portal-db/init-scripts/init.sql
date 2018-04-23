@@ -1,6 +1,9 @@
-CREATE USER docker;
-CREATE DATABASE docker;
-GRANT ALL PRIVILEGES ON DATABASE docker TO docker;
+CREATE USER admin;
+CREATE USER app;
+ALTER USER app WITH encrypted password 'copito';
+CREATE DATABASE db_kicker;
+GRANT ALL PRIVILEGES ON DATABASE db_kicker TO admin;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app;
 
 CREATE TABLE public.users (
   id            BIGSERIAL PRIMARY KEY,
