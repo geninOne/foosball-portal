@@ -1,22 +1,16 @@
 <template>
-    <div class="phone-viewport">
-        <md-bottom-bar md-type="shift" :md-theme="'bottom-bar-' + theme">
+    <div class="navigation">
+        <md-bottom-bar class="md-accent" md-type="shift" md-sync-route>
             <md-bottom-bar-item
+                    to="/"
+                    id="bottom-bar-item-home"
                     md-label="Home"
-                    md-icon="home"
-                    @click="theme = 'teal'"></md-bottom-bar-item>
+                    md-icon="home"></md-bottom-bar-item>
             <md-bottom-bar-item
-                    md-label="Pages"
-                    md-icon="pages"
-                    @click="theme = 'orange'"></md-bottom-bar-item>
-            <md-bottom-bar-item
-                    md-label="Posts"
-                    md-icon="/assets/icon-whatshot.svg"
-                    @click="theme = 'blue'"></md-bottom-bar-item>
-            <md-bottom-bar-item
-                    md-label="Favorites"
-                    md-icon="favorite"
-                    @click="theme = 'red'"></md-bottom-bar-item>
+                    id="bottom-bar-item-pages"
+                    md-label="Statistics"
+                    to="/dashboard"
+                    md-icon="pages"></md-bottom-bar-item>
         </md-bottom-bar>
     </div>
 </template>
@@ -24,13 +18,11 @@
 <script>
 export default {
   name: 'Navigation',
-  data: () => ({
-    theme: 'teal',
-  }),
 };
+
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .navigation {
         width: 100%;
         display: inline-flex;
@@ -39,5 +31,11 @@ export default {
         position: fixed;
         bottom: 0;
         left: 0;
+
+        /deep/
+        .md-ripple{
+            justify-content: center;
+        }
     }
+
 </style>
