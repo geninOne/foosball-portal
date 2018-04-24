@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <kp-header></kp-header>
-    <img src="./assets/logo.png">
     <router-view/>
     <kp-nav></kp-nav>
   </div>
