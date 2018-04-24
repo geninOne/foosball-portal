@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
-import Statistics from '@/components/Statistics';
+import Dashboard from '@/components/Dashboard';
 
 Vue.use(Router);
 
@@ -13,9 +13,9 @@ export default new Router({
       component: HelloWorld,
     },
     {
-      path: '/statistics',
-      name: 'Statistics',
-      component: Statistics,
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
     },
   ],
 });

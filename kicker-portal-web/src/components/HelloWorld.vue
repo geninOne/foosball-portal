@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <router-link to="statistics">Statistics</router-link>
+    <md-button to="/dashboard" class="md-raised md-accent">Statistics</md-button>
   </div>
 </template>
 
@@ -27,8 +27,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
