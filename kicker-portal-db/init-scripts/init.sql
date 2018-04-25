@@ -5,16 +5,6 @@ CREATE DATABASE db_kicker;
 GRANT ALL PRIVILEGES ON DATABASE db_kicker TO admin;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app;
 
-CREATE TABLE public.users (
-  id            BIGSERIAL PRIMARY KEY,
-  email         VARCHAR(320) NOT NULL,
-  first_name    VARCHAR(128) NOT NULL,
-  last_name     VARCHAR(128) NOT NULL,
-  password      VARCHAR(128) NOT NULL,
-  date_created  TIMESTAMP DEFAULT current_timestamp NOT NULL,
-  date_modified TIMESTAMP NOT NULL
-);
-
 CREATE INDEX index_user_first_name ON users (first_name);
 CREATE INDEX index_user_last_name ON users (last_name);
 
@@ -22,8 +12,8 @@ CREATE TABLE public.teams (
   id            BIGSERIAL PRIMARY KEY,
   user_1        BIGINT REFERENCES users (id) NOT NULL,
   user_2        BIGINT REFERENCES users (id) NOT NULL,
-  date_created  TIMESTAMP DEFAULT current_timestamp NOT NULL,
-  date_modified TIMESTAMP NOT NULL
+  created_at  TIMESTAMP DEFAULT current_timestamp NOT NULL,
+  updated_at TIMESTAMP NOT NULL
 );
 
 CREATE INDEX index_teams_user_1 ON teams (user_1);
@@ -36,8 +26,8 @@ CREATE TABLE public.matches (
   team_2        BIGINT REFERENCES teams (id) NOT NULL,
   score_1       SMALLINT NOT NULL,
   score_2       SMALLINT NOT NULL,
-  date_created  TIMESTAMP DEFAULT current_timestamp NOT NULL,
-  date_modified TIMESTAMP NOT NULL
+  created_at  TIMESTAMP DEFAULT current_timestamp NOT NULL,
+  updated_at TIMESTAMP NOT NULL
 );
 
 CREATE INDEX index_matches_team_1 ON matches (team_1);
@@ -51,8 +41,8 @@ INSERT INTO users (
   first_name, 
   last_name,
   password,
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   'elvizcacho@gmail.com',
@@ -68,8 +58,8 @@ INSERT INTO users (
   first_name, 
   last_name,
   password,
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   'dirk@gmail.com',
@@ -85,8 +75,8 @@ INSERT INTO users (
   first_name, 
   last_name,
   password,
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   'gena@gmail.com',
@@ -102,8 +92,8 @@ INSERT INTO users (
   first_name, 
   last_name,
   password,
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   'dirk@gmail.com',
@@ -119,8 +109,8 @@ VALUES (
 INSERT INTO teams (
   user_1, 
   user_2, 
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   1,
@@ -132,8 +122,8 @@ VALUES (
 INSERT INTO teams (
   user_1, 
   user_2, 
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   3,
@@ -150,8 +140,8 @@ INSERT INTO matches (
   team_2,
   score_1,
   score_2,
-  date_created,
-  date_modified
+  created_at,
+  updated_at
 )
 VALUES (
   1,
