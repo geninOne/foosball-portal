@@ -1,6 +1,12 @@
+const User = require('./model');
 
 function list(req, res) {
-  res.send('here list of users');
+  User
+    .findAll()
+    .then(users => {
+      res.send(users);
+    })
+  
 }
 
 module.exports.list = list;

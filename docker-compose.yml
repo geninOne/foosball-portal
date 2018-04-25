@@ -29,6 +29,12 @@ services:
       - db
     networks:
       - app-network
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: copito
+      POSTGRES_DB: db_kicker
+      POSTGRES_HOST: db
+      DB_SEED: 'true'
       
   app:
     build:
