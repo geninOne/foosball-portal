@@ -19,10 +19,13 @@ services:
   api:
     build:
       context: ./kicker-portal-api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
+    volumes:
+      - ./kicker-portal-api:/usr/src/app
+    entrypoint: /usr/src/app/entrypoint.sh
     ports:
       - 3100:3000
-    depends_on:
+    depends_on: 
       - db
     networks:
       - app-network
