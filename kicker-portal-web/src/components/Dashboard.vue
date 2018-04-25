@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <h1>{{userEmail}}, you are a real boss</h1>
     <add-match></add-match>
   </div>
 </template>
@@ -12,11 +13,19 @@ export default {
   components: {
     AddMatch,
   },
+  data() {
+    return {
+      get userEmail() {
+        return localStorage.getItem('userEmail');
+      },
+    };
+  },
 };
 </script>
 
 <style scoped>
 h1, h2 {
+  color: white;
   font-weight: normal;
 }
 ul {
