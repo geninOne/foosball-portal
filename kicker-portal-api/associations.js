@@ -6,7 +6,7 @@ const Match = require('./matches').model;
 const MatchSeeds = require('./matches').seeds;
 
 
-if (process.env.DB_SEED && false) {
+if (process.env.DB_SEED) {
   User.sync({force: true}).then(() => Promise.all(UserSeeds.map(seed => User.create(seed))));
   Team.sync({force: true}).then(() => Promise.all(TeamSeeds.map(seed => Team.create(seed))));
   Match.sync({force: true}).then(() => Promise.all(MatchSeeds.map(seed => Match.create(seed))));
