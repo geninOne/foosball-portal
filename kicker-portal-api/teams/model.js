@@ -8,13 +8,13 @@ const Team = sequelize.define('team', {
     primaryKey: true,
     autoIncrement: true
   },
-  user1: {
+  user1Id: {
     type: Sequelize.BIGINT,
-    field: 'user_1'
+    field: 'user1_id'
   },
-  user2: {
+  user2Id: {
     type: Sequelize.BIGINT,
-    field: 'user_2'
+    field: 'user2_id'
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -25,9 +25,5 @@ const Team = sequelize.define('team', {
     field: 'updated_at'
   }
 });
-
-if (process.env.DB_SEED) {
-  Team.sync({force: true}).then(() => Promise.all(seeds.map(seed => Team.create(seed))));
-}
 
 module.exports = Team;

@@ -8,17 +8,17 @@ const Match = sequelize.define('match', {
     primaryKey: true,
     autoIncrement: true
   },
-  matchOwner: {
+  matchOwnerId: {
     type: Sequelize.BIGINT,
-    field: 'match_owner'
+    field: 'match_owner_id'
   },
-  team1: {
+  team1Id: {
     type: Sequelize.BIGINT,
-    field: 'team_1'
+    field: 'team_1Id'
   },
-  team2: {
+  team2Id: {
     type: Sequelize.BIGINT,
-    field: 'team_2'
+    field: 'team_2Id'
   },
   score1: {
     type: Sequelize.SMALLINT,
@@ -37,9 +37,5 @@ const Match = sequelize.define('match', {
     field: 'updated_at'
   }
 });
-
-if (process.env.DB_SEED) {
-  Match.sync({force: true}).then(() => Promise.all(seeds.map(seed => Match.create(seed))));
-}
 
 module.exports = Match;
