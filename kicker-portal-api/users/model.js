@@ -1,7 +1,6 @@
 const sequelize = require('../db');
 const Sequelize = require('sequelize');
 const seeds = require('./seeds.js');
-const Team = require('../teams').model;
 
 const User = sequelize.define('user', {
   id: {
@@ -32,9 +31,5 @@ const User = sequelize.define('user', {
     field: 'updated_at'
   }
 });
-
-if (process.env.DB_SEED) {
-  User.sync({force: true}).then(() => Promise.all(seeds.map(seed => User.create(seed))));
-}
 
 module.exports = User;

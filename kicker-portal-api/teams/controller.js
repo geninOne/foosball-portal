@@ -4,10 +4,22 @@ const Sequelize = require('sequelize');
 
 function list(req, res) {
   Team
-    .findAll({})
-    .then(teams => {
-      res.send(teams);
+    .findAll({
+      attributes: ['id', 'createdAt', 'updatedAt'],
+      include: [ 
+        { 
+          model: User, 
+          as: 'user1',
+          attributes: ['id', 'firstName', 'lastName']
+        },
+        { 
+          model: User, 
+          as: 'user2',
+          attributes: ['id', 'firstName', 'lastName']
+        }
+      ]
     })
+    .then(teams => res.send(teams))
   
 }
 
