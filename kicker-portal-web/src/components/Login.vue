@@ -39,8 +39,19 @@ export default {
   },
   methods: {
     login() {
-      localStorage.setItem('userEmail', this.$data.form.email);
-      Router.push('dashboard');
+      this.$http.post('http://localhost:3100/logIn', JSON.stringify(this.form),
+        {
+          emulateJSON: true,
+          emulateHTTP: true,
+        },
+      )
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem('userData', data.bodyText);
+          Router.push('dashboard');
+        }, (error) => {
+          console.error(error);
+        });
     },
   },
 };
