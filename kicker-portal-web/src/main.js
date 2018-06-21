@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import VueMaterial from 'vue-material';
+import VueResource from 'vue-resource';
 import 'vue-material/dist/vue-material.css';
 import 'vue-material/dist/theme/default-dark.css';
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false;
 
 // plugins for vueJs
 Vue.use(VueMaterial);
+Vue.use(VueResource);
 
 // global components
 Vue.component('kp-header', Header);

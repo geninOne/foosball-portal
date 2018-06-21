@@ -16,7 +16,8 @@ export default {
   data() {
     return {
       get userEmail() {
-        return localStorage.getItem('userEmail');
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        return userData.firstName;
       },
     };
   },
